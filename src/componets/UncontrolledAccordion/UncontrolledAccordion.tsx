@@ -5,27 +5,28 @@ type AccordionType = {
     title: string,
 }
 
+type AccordionTitleType = {
+    title: string,
+    setActiveAccordion: () => void,
+}
 
 const UncontrolledAccordion = (props: AccordionType) => {
 
     const [activeAccordion, setActiveAccordion] = useState(true)
 
-    const onClickHandler = () => {
-        setActiveAccordion(!activeAccordion)
-    }
-
     return (
         <div>
-            <AccordionTitle title={props.title}/><button onClick={onClickHandler}>click</button>
+            <AccordionTitle title={props.title} setActiveAccordion={() => setActiveAccordion(!activeAccordion)}/>
             {activeAccordion ? <AccordionBody /> : ''}
         </div>
     );
 };
 
-function AccordionTitle(props: AccordionType) {
+
+function AccordionTitle(props: AccordionTitleType) {
     return (
         <>
-            <h3>{props.title}</h3>
+            <h3 onClick={() => props.setActiveAccordion()}>{props.title}</h3>
         </>
     )
 }

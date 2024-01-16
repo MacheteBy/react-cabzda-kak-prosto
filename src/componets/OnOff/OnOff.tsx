@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import S from './OnOff.module.css'
 
-const OnOff = () => {
+type OnOffType = {
+    value: boolean,
+    onClick: (value: boolean) => void,
+}
 
-    const [active, setActive] = useState(true)
+const OnOff = (props:OnOffType) => {
 
     const onClickHandler = () => {
-        setActive(!active)
+        props.onClick(!props.value)
     }
 
     const circleRed = `${S.circle} ${S.red}`
@@ -14,9 +17,9 @@ const OnOff = () => {
 
     return (
         <div className={S.wrapperOnOff}>
-            <button className={active ? S.green : ''} onClick={onClickHandler}>On</button>
-            <button className={active ? '' : S.red} onClick={onClickHandler}>Off</button>
-            <div className={active ? circleGreen : circleRed}></div>
+            <button className={props.value ? S.green : ''} onClick={onClickHandler}>On</button>
+            <button className={props.value ? '' : S.red} onClick={onClickHandler}>Off</button>
+            <div className={props.value ? circleGreen : circleRed}></div>
         </div>
     );
 };
