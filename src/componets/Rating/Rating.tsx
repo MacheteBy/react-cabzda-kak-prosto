@@ -14,7 +14,7 @@ type RatingType = {
 const Rating = (props: RatingType) => {
     return (
         <div>
-    {[...Array(5)].map((n, i) => <Star onClick={() => {props.onClick(i + 1)}} selected={i < props.value}/>)}
+    {[...Array(5)].map((n, i) => <Star key={i} onClick={() => {props.onClick(i + 1)}} selected={i < props.value}/>)}
         </div>
     );
 };
