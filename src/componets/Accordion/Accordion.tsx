@@ -23,6 +23,9 @@ type AccordionBodyType = {
     onClickAccordion: (value: any) => void
 }
 
+const AccordionTitle = React.memo(AccordionTitleSecret)
+const AccordionBody = React.memo(AccordionBodySecret)
+
 
 function Accordion(props: AccordionType) {
     return (
@@ -33,7 +36,7 @@ function Accordion(props: AccordionType) {
     )
 }
 
-function AccordionTitle(props: AccordionTitleType) {
+function AccordionTitleSecret(props: AccordionTitleType) {
     return (
         <>
             <h3 onClick={() => {props.onClick()}}>{props.title}</h3>
@@ -41,7 +44,7 @@ function AccordionTitle(props: AccordionTitleType) {
     )
 }
 
-function AccordionBody(props: AccordionBodyType) {
+function AccordionBodySecret(props: AccordionBodyType) {
     return (
         <ul>
             {props.items.map((e, index) => <li onClick={()=> {props.onClickAccordion(e.value)}} key={index}>{e.title}</li>)}

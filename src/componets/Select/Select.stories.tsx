@@ -8,19 +8,6 @@ export default {
     component: Select,
 };
 
-// type SelectPropsType = {
-//     selectItems: ItemsType[],
-//     selectValue: any,
-//     onClick: (selectCollapsed: boolean) => void,
-//     selectCollapsed: boolean,
-// }
-
-// type ItemsType = {
-//     title: string, 
-//     value: any
-// }
-
-
 export const SelectCoolapsed = () => {
     let [selectValue, setSelectValue] = useState('Minsk')
     let [selectCollapsed, setSelectCollapsed] = useState(false)
@@ -32,7 +19,16 @@ export const SelectCoolapsed = () => {
         { title: 'Kiev', value: 3 },
     ]
 
+    const onClickMenuHandler = (value: any) => {
+        setSelectValue(value)
+        setSelectCollapsed(!selectCollapsed)
+    }
+
     return (
-        <Select selectItems={selectItems} selectValue={selectValue} selectCollapsed={selectCollapsed} onClick={setSelectCollapsed} onClickMenu={setSelectValue} />
+        <Select selectItems={selectItems}
+            selectValue={selectValue}
+            selectCollapsed={selectCollapsed}
+            onClick={setSelectCollapsed}
+            onClickMenu={onClickMenuHandler} />
     )
 }

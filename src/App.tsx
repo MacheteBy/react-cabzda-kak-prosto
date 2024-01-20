@@ -35,6 +35,11 @@ function App() {
     alert(value)
   }
 
+  const onClickMenuHandler = (value: any) => {
+    setSelectValue(value)
+    setSelectCollapsed(!selectCollapsed)
+  }
+
 
 
   return (
@@ -50,7 +55,7 @@ function App() {
               selectValue={selectValue}
               selectCollapsed={selectCollapsed}
               onClick={setSelectCollapsed}
-              onClickMenu={setSelectValue} />
+              onClickMenu={onClickMenuHandler} />
     </div>
   );
 }
